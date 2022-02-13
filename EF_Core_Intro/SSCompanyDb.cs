@@ -10,7 +10,11 @@ namespace EF_Core_Intro
         public SSCompanyDb()
         {
             //Database.EnsureDeleted();
-            Database.EnsureCreated();
+            //Database.EnsureCreated();
+
+            // Use Migrations instead: (install NuGet: EFCore.Tools)
+            // add-migration <MigrationName> - add new migration with available changes
+            // update-migration              - update the database by the newest migration
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -21,7 +25,7 @@ namespace EF_Core_Intro
         {
             base.OnModelCreating(modelBuilder);
 
-            // Initialize
+            // Initialize (Seeder)
             modelBuilder.Entity<Department>().HasData(
                 new Department()
                 {
@@ -40,5 +44,7 @@ namespace EF_Core_Intro
         // Collections (tables in db)
         public DbSet<Worker> Workers { get; set; }
         public DbSet<Department> Departments { get; set; }
+        public DbSet<Country> Countries { get; set; }
+        public DbSet<Project> Projects { get; set; }
     }
 }
