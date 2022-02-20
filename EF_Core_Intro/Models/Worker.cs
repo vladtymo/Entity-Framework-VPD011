@@ -21,6 +21,8 @@ namespace EF_Core_Intro
         public string Name { get; set; }
         [Required, MaxLength(100)]
         public string Surname { get; set; }
+        [NotMapped]         // only in model
+        public string FullName => Name + " " + Surname;
         public DateTime? Birthdate { get; set; }
         [Column("WorkerSalary")]
         public decimal Salary { get; set; }

@@ -24,7 +24,7 @@ namespace EF_Core_Intro
 
             foreach (var w in goodWorkers)
             {
-                Console.WriteLine($"Worker {w.Name} {w.Surname} with salary of {w.Salary}$\n" +
+                Console.WriteLine($"Worker {w.FullName} with salary of {w.Salary}$\n" +
                     $"Department: {w.Department.Name}\n" +
                     $"Country: {(w.Country != null ? w.Country.Name : "no country")}\n" +
                     $"Projects: {w.Projects.Count}");
