@@ -26,19 +26,9 @@ namespace EF_Core_Intro
             base.OnModelCreating(modelBuilder);
 
             // Initialize (Seeder)
-            modelBuilder.Entity<Department>().HasData(
-                new Department()
-                {
-                    Number = 1,
-                    Name = "Design"
-                },
-                new Department()
-                {
-                    Number = 2,
-                    Name = "Programming",
-                    Phone = "45-34-23"
-                }
-            );
+            modelBuilder.SeedDepartments();
+            modelBuilder.SeedCountries();
+            modelBuilder.SeedProjects();
         }
 
         // Collections (tables in db)
