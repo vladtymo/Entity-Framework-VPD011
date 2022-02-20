@@ -10,11 +10,8 @@ namespace EF_Core_Intro
             Workers = new HashSet<Worker>();
         }
 
-        [Key]   // set primary key
         public int Number { get; set; }
-        [Required, MaxLength(250)]
         public string Name { get; set; }
-        [MaxLength(40)]
         public string Phone { get; set; }
 
         // Navigation Properties

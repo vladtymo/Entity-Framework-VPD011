@@ -4,14 +4,16 @@ using EF_Core_Intro;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EF_Core_Intro.Migrations
 {
     [DbContext(typeof(SSCompanyDb))]
-    partial class SSCompanyDbModelSnapshot : ModelSnapshot
+    [Migration("20220220152120_UseFluentAPI")]
+    partial class UseFluentAPI
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
