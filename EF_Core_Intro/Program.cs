@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Data;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 
@@ -9,6 +10,7 @@ namespace EF_Core_Intro
         static void Main(string[] args)
         {
             SSCompanyDb db = new SSCompanyDb();
+            SSDbQueries queries = new SSDbQueries(db);
 
             var result = db.Departments.Include(d => d.Workers); // get data from nav prop
 
@@ -17,10 +19,12 @@ namespace EF_Core_Intro
                 Console.WriteLine($"Department #{item.Number} {item.Name} {item.Phone ?? "Without Phone Number"} {item.Workers.Count}");
             }
 
-            var goodWorkers = db.Workers.Include(w => w.Country)
-                                        .Include(w => w.Projects)
-                                        .Include(w => w.Department)
-                                        .Where(w => w.Salary > 1000);
+            //var goodWorkers = db.Workers.Include(w => w.Country)
+            //                            .Include(w => w.Projects)
+            //                            .Include(w => w.Department)
+            //                            .Where(w => w.Salary > 1000);
+
+            var goodWorkers = queries.GetWorkersBySalary(2000, 3000);
 
             foreach (var w in goodWorkers)
             {
@@ -29,6 +33,8 @@ namespace EF_Core_Intro
                     $"Country: {(w.Country != null ? w.Country.Name : "no country")}\n" +
                     $"Projects: {w.Projects.Count}");
             }
+
+            //queries.DeleteProjectById(2);
         }
     }
 }
